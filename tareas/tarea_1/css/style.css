@@ -1,0 +1,56 @@
+/* general styles */
+body { margin: 0; padding: 0; }
+
+/* font sizing styles: absolute */
+.in-text { font-size: 1in;  }
+.cm-text { font-size: 1cm; }
+.pc-text { font-size: 1pc; }
+.mm-text { font-size: 5mm; }
+.pt-text { font-size: 15pt; }
+.px-text { font-size: 15px; }
+.Q-text { font-size: 15Q; }
+
+/* font sizing styles: relative */
+.em-text { font-size: 1em }
+.ex-text { font-size: 2ex }
+.ch-text { font-size: 2ch }
+.rem-text { font-size: 1rem }
+.percentage-text { font-size: 100% }
+
+/* box */
+.box { 
+    background: blue; 
+    display: block; 
+    width: 250px;
+    height: 150px;
+    margin: auto;
+    margin-bottom: 15px;
+    
+}
+
+.content {
+    background: red;
+    display: block;
+    width: 150px;
+    height: 100px;
+    font-weight: bold;
+    font-size: 15px;
+    color: white;
+}
+
+
+
+/* margin styles */
+.m-auto { margin: auto; }
+.ma { margin: 15px }
+.ml { margin-left: 15px; }
+.mt { margin-top: 15px; }
+.mb { margin-bottom: 15px; }
+.mr { margin-right: 15px; }
+
+/* padding styles */
+.pa { padding: 15px; }
+.pl { padding-left: 15px; }
+.pt { padding-top: 15px; }
+.pb { padding-bottom: 15px; }
+.pr { padding-right: 15px; }
