@@ -16,7 +16,8 @@
   <body>
         <!-- As a heading -->
     <nav class="navbar navbar-light bg-light">
-      <span class="navbar-brand mb-0 h1">Ejercicio 1</span>
+      <span class="navbar-brand mb-0 h1">Ejercicio 1: Cree un programa en php que permita recibir 3 números y determine cual es el
+mayor y cuál es el menor.</span>
     </nav>
     <div class="container">
     <div class="row">

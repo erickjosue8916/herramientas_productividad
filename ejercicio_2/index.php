@@ -16,7 +16,8 @@
   <body>
         <!-- As a heading -->
     <nav class="navbar navbar-light bg-light">
-      <span class="navbar-brand mb-0 h1">Ejercicio 2</span>
+      <span class="navbar-brand mb-0 h1">Ejercicio 2: Cree un programa en php, que le permita al usuario convertir de Kilómetros a
+Metros y viceversa, el usuario puede elegir qué tipo de conversión desea.</span>
     </nav>
     <div class="container">
     <div class="row">
@@ -24,10 +25,10 @@
       <form action="" method="POST">
         <div class="form-group">
 
-        <select class="custom-select">
+        <select class="custom-select" name="opc">
         <option selected>Tipo de conversion</option>
-        <option value="1" name="opc1">Kilometros a Metros</option>
-        <option value="2" name="opc2">Metros a Kilometros</option>
+        <option value="kilometros"  >Kilometros a Metros</option>
+        <option value="metros" >Metros a Kilometros</option>
        </select>
           <label>Ingrese la cantidad </label>
           <input type="text" class="form-control" name="dato" required>
@@ -41,28 +42,34 @@
         if (count($_POST) > 0) {
           // Inicio Codigo gestion para cuando los datos se mandaron
           $dato=$_POST["dato"];
-          $option["opc1"];
+          $opc=$_POST["opc"];
           $Resultado;
-          if($option==1)
-          {
-            $Resultado=$dato*1000;
-          }
-          else 
-          {
-            $Resultado=$dato*0.001;
-          }
-          
-      
-          
-          
-          
 
+          if($opc !="kilometros" && $opc !="metros" )
+          {
+            $Resultado=0;
+            echo "No tiene opcion seleccionada";
+          }
+           else if($opc=="kilometros")
+            {
+              $Resultado=$dato*1000;
+              $Message ="La conversion de kilometros a metros es: ". $Resultado. " metros";
+             
+            }
+            else if($opc=="metros")
+            {
+              $Resultado=$dato*0.001;
+              $Message ="La conversion de metros a kilometros es: ". $Resultado. " kilometros";
+            }
+
+          
+         
           // No borrar siguiente linea
       ?>
         <!-- HTML que mostrara el resultado -->
         <!-- Comienza a editar -->
         <div class="col-lg-6 col-md-4">
-          <h3>El total  es : <?php echo $Resultado ?>  </h3>
+          <h3> <?php echo $Message ?>  </h3>
         </div>
 
         <!-- DEJA DE EDITAR -->

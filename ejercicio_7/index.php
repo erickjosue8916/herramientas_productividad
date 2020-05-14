@@ -11,41 +11,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-    <title>Ejercicio 4</title>
+    <title>Ejercicio 7</title>
   </head>
   <body>
         <!-- As a heading -->
     <nav class="navbar navbar-light bg-light">
-      <span class="navbar-brand mb-0 h1">Ejercicio 4</span>
+      <span class="navbar-brand mb-0 h1">Ejercicio 7: Cree un programa en php que permita copiar archivos pdf al servidor.</span>
     </nav>
     <div class="container">
     <div class="row">
       <div class="col-lg-4 col-md-6">
-      <form action="" method="POST">
+      <form action="index.php" method="post" enctype="multipart/form-data"> 
         <div class="form-group">
-          <label>input de ejemplo </label>
-          <input type="text" class="form-control" name="nombreCampo" required>
+         
+          <div class="custom-file">
+
+                <label for="exampleFormControlFile1">Cargue un archivo</label>
+                <input type="file" name="subirArchivo" class="form-control-file" id="exampleFormControlFile1">
+                
         </div>
-        <button type="submit" class="btn btn-primary">Calcular</button>
+        </div>
+        <div>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+        <?php if (isset($archivo)): ?>
+          <?php if (!$extension_correcta) :?>
+            <div class="alert alert-primary" role="alert">
+           Archivo incorrecto
+          </div>
+
+            <?php elseif (!$archivo_ok) :?>
+              <div class="alert alert-primary" role="alert">
+             Error al cargar el archivo
+             </div>
+
+              <?php else :?> 
+                <div class="col-lg-6 col-md-4">
+                <h3>  Archivo guardado correctamente  </h3>
+                </div>
+
+                <?php endif?>
+              <?php endif;?>
+        </div>
+        
+        
+
       </form>
       </div>
 <!-- Oculto hasta enviar el formulario -->
       <?php
-        if (count($_POST) > 0) {
-          // Inicio Codigo gestion para cuando los datos se mandaron
+       $archivo;
+       $extension;
+       $extension_correcta;
+       $ruta_destino_archivo;
+       $archivo_ok;
 
-
-          // No borrar siguiente linea
+        $archivo = (isset($_FILES['subirArchivo'])) ? $_FILES['subirArchivo'] : null;
+          if ($archivo) {
+              $extension = pathinfo($archivo['name'], PATHINFO_EXTENSION);
+              $extension = strtolower($extension);
+              $extension_correcta = ($extension == 'pdf');
+  
+              if ($extension_correcta) {
+                  $ruta_destino_archivo = "archivos/{$archivo['name']}";
+                  $archivo_ok = move_uploaded_file($archivo['tmp_name'], $ruta_destino_archivo);
+              }
+          }
+        
       ?>
         <!-- HTML que mostrara el resultado -->
         <!-- Comienza a editar -->
-        <div class="col-lg-6 col-md-4">
-          <h3>El total de la venta es : <?php echo "$".$primero." + $".$segundo." = ". "$".($primero + $segundo) ?>  </h3>
-        </div>
+        
 
         <!-- DEJA DE EDITAR -->
       <?php
-        }
+       
       ?>
     </div>
   </div>

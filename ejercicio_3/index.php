@@ -1,7 +1,5 @@
 <?php
-  // Configuracion inicial
-
-  // Fin configuracion inicial
+   $inputs = 15;
 ?>
 <!doctype html>
 <html lang="en">
@@ -16,16 +14,23 @@
   <body>
         <!-- As a heading -->
     <nav class="navbar navbar-light bg-light">
-      <span class="navbar-brand mb-0 h1">Ejercicio 3</span>
+      <span class="navbar-brand mb-0 h1">Ejercicio 3: Cree un programa que al recibir como dato 15 notas de un estudiante permita
+obtener el dato que mas se repite(moda), y la media.</span>
     </nav>
     <div class="container">
     <div class="row">
       <div class="col-lg-4 col-md-6">
       <form action="" method="POST">
+      <?php
+          for ($i=0; $i < $inputs; $i++) {   
+        ?>
         <div class="form-group">
-          <label>Ingrese las notas de los estudiantes </label>
-          <input type="text" class="form-control" name="nota" required>
+          <label>Ingrese la nota: <?php echo ($i + 1); ?></label>
+          <input type="text" class="form-control" name="<?php echo "nota".$i; ?>" required>
         </div>
+        <?php
+          }
+        ?>
         <button type="submit" class="btn btn-primary">Calcular</button>
       </form>
       </div>
@@ -33,18 +38,38 @@
       <?php
         if (count($_POST) > 0) {
           // Inicio Codigo gestion para cuando los datos se mandaron
-          $nota=$_POST["nota"];
-          for($i=0;$i<=15;$i++)
-          {
+         
+          $media = array_reduce($_POST, function ($nota1, $nota2) {
+            return $nota1 + $nota2;
+        }, 0);
+          
+          $media /= count($_POST);
+
+    
+          $cuenta = array_count_values($_POST);
+          $orden = implode(", ", $_POST);
+              arsort($cuenta);
             
-          }
+              $moda=key($cuenta);
+              
+              
+         
+         
 
           // No borrar siguiente linea
       ?>
         <!-- HTML que mostrara el resultado -->
         <!-- Comienza a editar -->
         <div class="col-lg-6 col-md-4">
-          <h3>El total de la venta es : <?php echo "$".$primero." + $".$segundo." = ". "$".($primero + $segundo) ?>  </h3>
+        <h3>Total de media y moda  </h3>
+          <ul>
+          
+           <li> <b>Orden de los numeros: </b> <?php echo  $orden?>  </li>
+            <li> <b>Media:</b> <?php echo $media?>  </li>
+            <li> <b>Moda:</b> <?php echo $moda?>  </li>
+           
+          </ul>
+        </div>
         </div>
 
         <!-- DEJA DE EDITAR -->
