@@ -11,20 +11,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-    <title>Ejercicio 4</title>
+    <title>Ejercicio 2</title>
   </head>
   <body>
         <!-- As a heading -->
     <nav class="navbar navbar-light bg-light">
-      <span class="navbar-brand mb-0 h1">Ejercicio 4</span>
+      <span class="navbar-brand mb-0 h1">Ejercicio 2</span>
     </nav>
     <div class="container">
     <div class="row">
       <div class="col-lg-4 col-md-6">
       <form action="" method="POST">
         <div class="form-group">
-          <label>input de ejemplo </label>
-          <input type="text" class="form-control" name="nombreCampo" required>
+
+        <select class="custom-select">
+        <option selected>Tipo de conversion</option>
+        <option value="1" name="opc1">Kilometros a Metros</option>
+        <option value="2" name="opc2">Metros a Kilometros</option>
+       </select>
+          <label>Ingrese la cantidad </label>
+          <input type="text" class="form-control" name="dato" required>
+          
         </div>
         <button type="submit" class="btn btn-primary">Calcular</button>
       </form>
@@ -33,14 +40,29 @@
       <?php
         if (count($_POST) > 0) {
           // Inicio Codigo gestion para cuando los datos se mandaron
-
+          $dato=$_POST["dato"];
+          $option["opc1"];
+          $Resultado;
+          if($option==1)
+          {
+            $Resultado=$dato*1000;
+          }
+          else 
+          {
+            $Resultado=$dato*0.001;
+          }
+          
+      
+          
+          
+          
 
           // No borrar siguiente linea
       ?>
         <!-- HTML que mostrara el resultado -->
         <!-- Comienza a editar -->
         <div class="col-lg-6 col-md-4">
-          <h3>El total de la venta es : <?php echo "$".$primero." + $".$segundo." = ". "$".($primero + $segundo) ?>  </h3>
+          <h3>El total  es : <?php echo $Resultado ?>  </h3>
         </div>
 
         <!-- DEJA DE EDITAR -->

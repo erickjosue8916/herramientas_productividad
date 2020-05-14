@@ -11,20 +11,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-    <title>Ejercicio 4</title>
+    <title>Ejercicio 3</title>
   </head>
   <body>
         <!-- As a heading -->
     <nav class="navbar navbar-light bg-light">
-      <span class="navbar-brand mb-0 h1">Ejercicio 4</span>
+      <span class="navbar-brand mb-0 h1">Ejercicio 3</span>
     </nav>
     <div class="container">
     <div class="row">
       <div class="col-lg-4 col-md-6">
       <form action="" method="POST">
         <div class="form-group">
-          <label>input de ejemplo </label>
-          <input type="text" class="form-control" name="nombreCampo" required>
+          <label>Ingrese las notas de los estudiantes </label>
+          <input type="text" class="form-control" name="nota" required>
         </div>
         <button type="submit" class="btn btn-primary">Calcular</button>
       </form>
@@ -33,7 +33,11 @@
       <?php
         if (count($_POST) > 0) {
           // Inicio Codigo gestion para cuando los datos se mandaron
-
+          $nota=$_POST["nota"];
+          for($i=0;$i<=15;$i++)
+          {
+            
+          }
 
           // No borrar siguiente linea
       ?>
