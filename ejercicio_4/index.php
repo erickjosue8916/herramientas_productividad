@@ -41,8 +41,9 @@
           $p1 = $_POST["pelicula0"];
           $p2 = $_POST["pelicula1"];
           $p3 = $_POST["pelicula2"];
-          
-          if ($p1 > $p2) {
+          if ($p1 == $p2 && $p1 == $p3) {
+            $primero = $segundo = $p1;
+          } else if ($p1 > $p2) {
             if ($p1 > $p3) {
               $primero = $p1;
               $segundo = ($p3 > $p2) ? $p3: $p2;

@@ -1,7 +1,5 @@
 <?php
-  // Configuracion inicial
-
-  // Fin configuracion inicial
+  $inputs = 4;
 ?>
 <!doctype html>
 <html lang="en">
@@ -11,39 +9,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-    <title>Ejercicio 4</title>
+    <title>Ejercicio 5</title>
   </head>
   <body>
         <!-- As a heading -->
     <nav class="navbar navbar-light bg-light">
-      <span class="navbar-brand mb-0 h1">Ejercicio 4</span>
+      <span class="navbar-brand mb-0 h1">Ejercicio 5</span>
     </nav>
     <div class="container">
     <div class="row">
       <div class="col-lg-4 col-md-6">
       <form action="" method="POST">
+        <?php
+          for ($i=0; $i < $inputs; $i++) {   
+        ?>
         <div class="form-group">
-          <label>input de ejemplo </label>
-          <input type="text" class="form-control" name="nombreCampo" required>
+          <label>Nota <?php echo ($i + 1); ?></label>
+          <input type="text" class="form-control" name="<?php echo "nota".$i; ?>" required>
         </div>
+        <?php
+          }
+        ?>
         <button type="submit" class="btn btn-primary">Calcular</button>
       </form>
       </div>
-<!-- Oculto hasta enviar el formulario -->
       <?php
         if (count($_POST) > 0) {
-          // Inicio Codigo gestion para cuando los datos se mandaron
-
-
-          // No borrar siguiente linea
+          $max = max($_POST);
+          $min = min($_POST);
+          $promedio = array_reduce($_POST, function ($prev, $acc) {
+              return $prev + $acc;
+          }, 0);
+          $promedio /= count($_POST);
       ?>
-        <!-- HTML que mostrara el resultado -->
-        <!-- Comienza a editar -->
         <div class="col-lg-6 col-md-4">
-          <h3>El total de la venta es : <?php echo "$".$primero." + $".$segundo." = ". "$".($primero + $segundo) ?>  </h3>
+          <h3>Notas </h3>
+          <ul>
+            <li> <b>Mayor:</b> <?php echo $max?>  </li>
+            <li> <b>Min:</b> <?php echo $min?>  </li>
+            <li> <b>Promedio:</b> <?php echo $promedio?>  </li>
+          </ul>
         </div>
-
-        <!-- DEJA DE EDITAR -->
       <?php
         }
       ?>
