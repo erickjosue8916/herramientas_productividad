@@ -43,37 +43,37 @@
   <body>
         <!-- As a heading -->
     <nav class="navbar navbar-light bg-light">
-      <span class="navbar-brand mb-0 h1">Ejercicio 8</span>
+        <span class="navbar-brand mb-0 h1">Ejercicio 8: blog</span>
     </nav>
     <div class="container">
     <div class="row">
-      <div class="col-lg-4 col-md-6">
-      <form action="blog.php" method="POST" enctype="multipart/form-data">
-        <div class="form-group">
-          <label>Titulo </label>
-          <input type="text" class="form-control" name="titulo" required>
+        <?php
+            if (count($_POST) > 0) {
+            // Inicio Codigo gestion para cuando los datos se mandaron
+            $titulo = $_POST["titulo"];
+            $descripcion = $_POST["descripcion"];
+            $fecha = $_POST["fecha"];
+            $imagen = "images/".$_FILES["imagen"]["name"];
+            $contenido = $_POST["contenido"];
+            // No borrar siguiente linea
+        ?>
+            <!-- HTML que mostrara el resultado -->
+            <!-- Comienza a editar -->
+            <div class="card" style="width: 100%; max-width: 400px; margin: auto;">
+            <img src="<?php echo $imagen; ?>" class="card-img-top" style="max-height:200px" alt="...">
+            <div class="card-body">
+                <h4 class="card-title"><?php echo $titulo; ?></h4>
+                <h5 class="card-title"><?php echo $descripcion; ?></h5>
+                <p class="card-text"><?php echo $contenido; ?></p>
+                <p class="card-text"><small class="text-muted"><?php echo $fecha; ?></small></p>
+            </div>
+            </div>
+            <!-- DEJA DE EDITAR -->
+        <?php
+            }
+        ?>
         </div>
-        <div class="form-group">
-          <label>Descripcion </label>
-          <input type="text" class="form-control" name="descripcion" required>
-        </div>
-        <div class="form-group">
-          <label>Fecha publicación </label>
-          <input type="date" class="form-control" name="fecha" required>
-        </div>
-        <div class="form-group">
-          <label>Imagen </label>
-          <input type="file" class="form-control" name="imagen" required>
-        </div>
-        <div class="form-group">
-          <label>Contenido </label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" name="contenido" rows="3" require></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Calcular</button>
-      </form>
-      </div>
     </div>
-  </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="../bootstrap/js/jquery.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
