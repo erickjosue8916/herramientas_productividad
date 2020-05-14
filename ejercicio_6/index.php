@@ -1,6 +1,15 @@
 <?php
   // Configuracion inicial
+  $productos = [];
 
+  for ($i=1; $i < 11; $i++) { 
+    array_push($productos, [
+      "codigo" => $i,
+      "nombre" => "producto ".$i,
+      "precio" => 0.75 + $i,
+      "stock" => 5 + $i
+    ]);
+  }
   // Fin configuracion inicial
 ?>
 <!doctype html>
@@ -11,42 +20,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-    <title>Ejercicio 4</title>
+    <title>Ejercicio 6</title>
   </head>
   <body>
         <!-- As a heading -->
     <nav class="navbar navbar-light bg-light">
-      <span class="navbar-brand mb-0 h1">Ejercicio 4</span>
+      <span class="navbar-brand mb-0 h1">Ejercicio 6: Cree un arreglo asociativo el cual deberá contener la información de productos de
+una tienda el cual lo tiene que mostrar en una tabla</span>
     </nav>
     <div class="container">
     <div class="row">
-      <div class="col-lg-4 col-md-6">
-      <form action="" method="POST">
-        <div class="form-group">
-          <label>input de ejemplo </label>
-          <input type="text" class="form-control" name="nombreCampo" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Calcular</button>
-      </form>
+      <div class="col-sm">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">codigo</th>
+            <th scope="col">nombre</th>
+            <th scope="col">precio</th>
+            <th scope="col">stock</th>
+          </tr>
+        </thead>
+        <tbody>
+        <?php
+          foreach($productos as $producto){
+        ?>
+          <tr>
+            <td> <?php echo $producto["codigo"] ?> </td>
+            <td> <?php echo $producto["nombre"] ?> </td>
+            <td> <?php echo $producto["precio"] ?> </td>
+            <td> <?php echo $producto["stock"] ?> </td>
+          </tr>
+        <?php
+          }
+        ?>
+        </tbody>
+      </table>
       </div>
-<!-- Oculto hasta enviar el formulario -->
-      <?php
-        if (count($_POST) > 0) {
-          // Inicio Codigo gestion para cuando los datos se mandaron
-
-
-          // No borrar siguiente linea
-      ?>
-        <!-- HTML que mostrara el resultado -->
-        <!-- Comienza a editar -->
-        <div class="col-lg-6 col-md-4">
-          <h3>El total de la venta es : <?php echo "$".$primero." + $".$segundo." = ". "$".($primero + $segundo) ?>  </h3>
-        </div>
-
-        <!-- DEJA DE EDITAR -->
-      <?php
-        }
-      ?>
     </div>
   </div>
     <!-- Optional JavaScript -->
