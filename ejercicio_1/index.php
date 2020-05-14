@@ -1,6 +1,6 @@
 <?php
   // Configuracion inicial
-
+  
   // Fin configuracion inicial
 ?>
 <!doctype html>
@@ -37,16 +37,14 @@
       </div>
 <!-- Oculto hasta enviar el formulario -->
       <?php 
-          $num1=0;
-          $num2=0;
-          $num3=0;
-          $Num_mayor;
-          $Num_menor;
-
+        
         if (count($_POST) > 0) {
           // Inicio Codigo gestion para cuando los datos se mandaron
-         
-
+          $num1 = $_POST["num1"];
+          $num2 = $_POST["num2"];
+          $num3 = $_POST["num3"];
+          $Num_mayor=0;
+          $Num_menor=0;
           if($num1>$num2 && $num1>$num3)
           {
             $Num_mayor=$num1;
