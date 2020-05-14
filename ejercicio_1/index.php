@@ -36,14 +36,16 @@
       </form>
       </div>
 <!-- Oculto hasta enviar el formulario -->
-      <?php
-        if (count($_POST) > 0) {
-          // Inicio Codigo gestion para cuando los datos se mandaron
+      <?php 
           $num1=0;
           $num2=0;
           $num3=0;
           $Num_mayor;
           $Num_menor;
+
+        if (count($_POST) > 0) {
+          // Inicio Codigo gestion para cuando los datos se mandaron
+         
 
           if($num1>$num2 && $num1>$num3)
           {
@@ -88,8 +90,8 @@
         <!-- HTML que mostrara el resultado -->
         <!-- Comienza a editar -->
         <div class="col-lg-6 col-md-4">
-          <h3>El numero Mayor es : <?php echo " ".$Num_mayor ?>  </h3>
-          <h3>El numero Menor es : <?php echo " ".$Num_menor ?>  </h3>
+          <h3>El numero Mayor es : <?php echo $Num_mayor ?>  </h3>
+          <h3>El numero Menor es : <?php echo $Num_menor ?>  </h3>
         </div>
 
         <!-- DEJA DE EDITAR -->
