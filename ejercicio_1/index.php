@@ -90,6 +90,7 @@ mayor y cuál es el menor.</span>
         <!-- HTML que mostrara el resultado -->
         <!-- Comienza a editar -->
         <div class="col-lg-6 col-md-4">
+          <?php echo "<b>Numeros</b> $num1 $num2 $num3"; ?>
           <h3>El numero Mayor es : <?php echo $Num_mayor ?>  </h3>
           <h3>El numero Menor es : <?php echo $Num_menor ?>  </h3>
         </div>
