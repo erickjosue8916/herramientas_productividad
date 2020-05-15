@@ -25,7 +25,7 @@
         ?>
         <div class="form-group">
           <label>Nota <?php echo ($i + 1); ?></label>
-          <input type="text" class="form-control" name="<?php echo "nota".$i; ?>" required>
+          <input type="text" class="form-control" pattern="[0-9]|10" name="<?php echo "nota".$i; ?>" required>
         </div>
         <?php
           }

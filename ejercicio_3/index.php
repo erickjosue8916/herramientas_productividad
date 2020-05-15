@@ -38,7 +38,6 @@ obtener el dato que mas se repite(moda), y la media.</span>
       <?php
         if (count($_POST) > 0) {
           // Inicio Codigo gestion para cuando los datos se mandaron
-         
           $media = array_reduce($_POST, function ($nota1, $nota2) {
             return $nota1 + $nota2;
         }, 0);

@@ -1,35 +1,3 @@
-<?php
-  // Configuracion inicial
-/*   if (count($_POST) > 0) {
-    $content_blog = file_get_contents("blog.json");
-    $blog = fopen("blog.json", "w") or die ("error al crear el archivo");
-    $titulo = $_POST["titulo"];
-    $descripcion = $_POST["descripcion"];
-    $fecha = $_POST["fecha"];
-    $imagen = "images/".$_FILES["imagen"]["name"];
-    $contenido = $_POST["contenido"];
-    copy($_FILES["imagen"]["tmp_name"], $image);
-    $publicacion = [
-      "titulo" => $titulo,
-      "descripcion" => $descripcion,
-      "fecha" => $fecha,
-      "imagen" => $imagen,
-      "contenido" => $contenido
-    ];
-    echo $content_blog;
-    $content_blog = json_decode($content_blog);
-    print_r($content_blog);
-    array_push($content_blog, $publicacion);
-    echo $content_blog;
-    $publicacion = json_encode($publicacion);
-    $texto = "".$publicacion;
-  
-    fwrite($blog, $texto) or die("No se pudo escribir en el archivo");
-  
-    fclose($blog);
-  }
- */  // Fin configuracion inicial
-?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -48,29 +16,40 @@
     <div class="container">
     <div class="row">
       <div class="col-lg-4 col-md-6">
-      <form action="blog.php" method="POST" enctype="multipart/form-data">
-        <div class="form-group">
-          <label>Titulo </label>
-          <input type="text" class="form-control" name="titulo" required>
-        </div>
-        <div class="form-group">
-          <label>Descripcion </label>
-          <input type="text" class="form-control" name="descripcion" required>
-        </div>
-        <div class="form-group">
-          <label>Fecha publicación </label>
-          <input type="date" class="form-control" name="fecha" required>
-        </div>
-        <div class="form-group">
-          <label>Imagen </label>
-          <input type="file" class="form-control" name="imagen" required>
-        </div>
-        <div class="form-group">
-          <label>Contenido </label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" name="contenido" rows="3" require></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Calcular</button>
-      </form>
+        <form action="blog.php" method="POST" enctype="multipart/form-data">
+          <div class="form-group">
+            <label>Titulo </label>
+            <input type="text" class="form-control" name="titulo" required>
+          </div>
+          <div class="form-group">
+            <label>Descripcion </label>
+            <input type="text" class="form-control" name="descripcion" required>
+          </div>
+          <div class="form-group">
+            <label>Fecha publicación </label>
+            <input type="date" class="form-control" name="fecha" required>
+          </div>
+          <div class="form-group">
+            <label>Imagen </label>
+            <input type="file" class="form-control" name="imagen" required>
+          </div>
+          <div class="form-group">
+            <label>Contenido </label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" name="contenido" rows="3" require></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Calcular</button>
+        </form>
+      </div>
+      <div class="col-lg-6 col-md-4">
+      <?php
+        if ($_GET["error"]) {
+      ?>
+          <div class="alert alert-danger" role="alert">
+            NO se proporsionó un archivo de imagen valida :v
+          </div>
+      <?php
+        }
+      ?>
       </div>
     </div>
   </div>

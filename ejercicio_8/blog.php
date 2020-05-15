@@ -1,35 +1,3 @@
-<?php
-  // Configuracion inicial
-/*   if (count($_POST) > 0) {
-    $content_blog = file_get_contents("blog.json");
-    $blog = fopen("blog.json", "w") or die ("error al crear el archivo");
-    $titulo = $_POST["titulo"];
-    $descripcion = $_POST["descripcion"];
-    $fecha = $_POST["fecha"];
-    $imagen = "images/".$_FILES["imagen"]["name"];
-    $contenido = $_POST["contenido"];
-    copy($_FILES["imagen"]["tmp_name"], $image);
-    $publicacion = [
-      "titulo" => $titulo,
-      "descripcion" => $descripcion,
-      "fecha" => $fecha,
-      "imagen" => $imagen,
-      "contenido" => $contenido
-    ];
-    echo $content_blog;
-    $content_blog = json_decode($content_blog);
-    print_r($content_blog);
-    array_push($content_blog, $publicacion);
-    echo $content_blog;
-    $publicacion = json_encode($publicacion);
-    $texto = "".$publicacion;
-  
-    fwrite($blog, $texto) or die("No se pudo escribir en el archivo");
-  
-    fclose($blog);
-  }
- */  // Fin configuracion inicial
-?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -53,14 +21,19 @@
             $titulo = $_POST["titulo"];
             $descripcion = $_POST["descripcion"];
             $fecha = $_POST["fecha"];
-            $imagen = "images/".$_FILES["imagen"]["name"];
+            $type = $_FILES["imagen"]["type"];
+            if ( $type != "image/jpeg" && $type != "image/png" && $type != "image/jpg" ){
+              header("Location: index.php?error=imagen+invalida");
+              exit;
+            }
+            copy($_FILES["imagen"]["tmp_name"], $_FILES["imagen"]["name"]);
             $contenido = $_POST["contenido"];
-            // No borrar siguiente linea
+            echo $imagen;
         ?>
             <!-- HTML que mostrara el resultado -->
             <!-- Comienza a editar -->
             <div class="card" style="width: 100%; max-width: 400px; margin: auto;">
-            <img src="<?php echo $imagen; ?>" class="card-img-top" style="max-height:200px" alt="...">
+            <img src="<?php echo $_FILES["imagen"]["name"]; ?>" class="card-img-top" style="max-height:200px" alt="...">
             <div class="card-body">
                 <h4 class="card-title"><?php echo $titulo; ?></h4>
                 <h5 class="card-title"><?php echo $descripcion; ?></h5>
