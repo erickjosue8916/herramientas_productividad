@@ -36,15 +36,24 @@
       <?php
       //(0|1|2|3|4|5|6|7|8|9|10){1}|(0|1|2|3|4|5|6|7|8|9|10){1}.[0-9]{0,2}
         if (count($_POST) > 0) {
+          
           $max = max($_POST);
           $min = min($_POST);
           $promedio = array_reduce($_POST, function ($prev, $acc) {
+              $txtNotas .= $acc." ";
               return $prev + $acc;
           }, 0);
           $promedio /= count($_POST);
       ?>
         <div class="col-lg-6 col-md-4">
-          <h3>Notas </h3>
+          
+          <?php
+            $txtNotas = "";
+            foreach($_POST as $value) {
+              $txtNotas .= $value." ";
+            }
+            echo "<h3>Notas </h3>".$txtNotas;
+          ?>
           <ul>
             <li> <b>Mayor:</b> <?php echo $max?>  </li>
             <li> <b>Min:</b> <?php echo $min?>  </li>
