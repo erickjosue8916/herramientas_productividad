@@ -25,7 +25,7 @@
         ?>
         <div class="form-group">
           <label>Precio pelicula <?php echo ($i + 1); ?></label>
-          <input type="text" class="form-control" pattern="[0-9]*.[0-9]{0,2}" title="##.##" name="<?php echo "pelicula".$i; ?>" required>
+          <input type="text" class="form-control" pattern="^[0-9]{1,3}$|^[0-9]{1,3}.[0-9]{0,2}$" title="###.##" name="<?php echo "pelicula".$i; ?>" required>
         </div>
         <?php
           }
@@ -62,6 +62,11 @@
           }
       ?>
         <div class="col-lg-6 col-md-4">
+          <ul>
+            <li> Pelicula 1 = $<?php echo $p1; ?> </li>
+            <li> Pelicula 2 = $<?php echo $p2; ?> </li>
+            <li> Pelicula 3 = $<?php echo $p3; ?> </li>
+          </ul>
           <h3>El total de la venta es : <?php echo "$".$primero." + $".$segundo." = ". "$".($primero + $segundo) ?>  </h3>
         </div>
       <?php
