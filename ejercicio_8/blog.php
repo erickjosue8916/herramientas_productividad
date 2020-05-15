@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-    <title>Ejercicio 8</title>
+    <title>Blog</title>
   </head>
   <body>
         <!-- As a heading -->
@@ -28,7 +28,6 @@
             }
             copy($_FILES["imagen"]["tmp_name"], $_FILES["imagen"]["name"]);
             $contenido = $_POST["contenido"];
-            echo $imagen;
         ?>
             <!-- HTML que mostrara el resultado -->
             <!-- Comienza a editar -->

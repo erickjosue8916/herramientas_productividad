@@ -25,7 +25,7 @@
         ?>
         <div class="form-group">
           <label>Nota <?php echo ($i + 1); ?></label>
-          <input type="text" class="form-control" pattern="[0-9]|10" name="<?php echo "nota".$i; ?>" required>
+          <input type="text" class="form-control" pattern="^(0|1|2|3|4|5|6|7|8|9|10){1}$|^[0-9]{1}\.[0-9]{0,2}$" title="la nota debe ser entre 0 y 10" name="<?php echo "nota".$i; ?>" required>
         </div>
         <?php
           }
@@ -34,6 +34,7 @@
       </form>
       </div>
       <?php
+      //(0|1|2|3|4|5|6|7|8|9|10){1}|(0|1|2|3|4|5|6|7|8|9|10){1}.[0-9]{0,2}
         if (count($_POST) > 0) {
           $max = max($_POST);
           $min = min($_POST);

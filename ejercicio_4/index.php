@@ -25,7 +25,7 @@
         ?>
         <div class="form-group">
           <label>Precio pelicula <?php echo ($i + 1); ?></label>
-          <input type="text" class="form-control" pattern="[0-9]*.[0-9]{0,2}" name="<?php echo "pelicula".$i; ?>" required>
+          <input type="text" class="form-control" pattern="[0-9]*.[0-9]{0,2}" title="##.##" name="<?php echo "pelicula".$i; ?>" required>
         </div>
         <?php
           }

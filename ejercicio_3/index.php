@@ -19,14 +19,30 @@ obtener el dato que mas se repite(moda), y la media.</span>
     </nav>
     <div class="container">
     <div class="row">
-      <div class="col-lg-4 col-md-6">
+      <div class="col-sm">
       <form action="" method="POST">
       <?php
-          for ($i=0; $i < $inputs; $i++) {   
+          for ($i=0; $i < $inputs; $i+=3) {   
         ?>
-        <div class="form-group">
-          <label>Ingrese la nota: <?php echo ($i + 1); ?></label>
-          <input type="number" step="0.01" min="0" max="10" class="form-control"  name="<?php echo "nota".$i; ?>" required>
+        <div class="row">
+            <div class="col-sm">
+              <div class="form-group">
+                <label>Ingrese la nota: <?php echo ($i + 1); ?></label>
+                <input type="number" step="0.01" min="0" max="10" class="form-control"  name="<?php echo "nota".$i; ?>" required>
+              </div>
+            </div>
+            <div class="col-sm">
+              <div class="form-group">
+                <label>Ingrese la nota: <?php echo ($i + 2); ?></label>
+                <input type="number" step="0.01" min="0" max="10" class="form-control"  name="<?php echo "nota".($i + 1); ?>" required>
+              </div>
+            </div>
+            <div class="col-sm">
+              <div class="form-group">
+                <label>Ingrese la nota: <?php echo ($i + 3); ?></label>
+                <input type="number" step="0.01" min="0" max="10" class="form-control"  name="<?php echo "nota".($i + 2); ?>" required>
+              </div>
+            </div>
         </div>
         <?php
           }
@@ -34,7 +50,9 @@ obtener el dato que mas se repite(moda), y la media.</span>
         <button type="submit" class="btn btn-primary">Calcular</button>
       </form>
       </div>
+    </div>
 <!-- Oculto hasta enviar el formulario -->
+    <div class="row">
       <?php
         if (count($_POST) > 0) {
           // Inicio Codigo gestion para cuando los datos se mandaron
