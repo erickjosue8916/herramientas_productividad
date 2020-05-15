@@ -53,13 +53,13 @@ Metros y viceversa, el usuario puede elegir qué tipo de conversión desea.</spa
            else if($opc=="kilometros")
             {
               $Resultado=$dato*1000;
-              $Message ="La conversion de kilometros a metros es: ". $Resultado. " metros";
+              $Message ="La conversion de $dato kilometros a metros es: ". $Resultado. " metros";
              
             }
             else if($opc=="metros")
             {
               $Resultado=$dato*0.001;
-              $Message ="La conversion de metros a kilometros es: ". $Resultado. " kilometros";
+              $Message ="La conversion de $dato metros a kilometros es: ". $Resultado. " kilometros";
             }
 
           
