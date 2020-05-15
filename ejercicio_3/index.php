@@ -1,5 +1,5 @@
 <?php
-   $inputs = 15;
+    $inputs = 15;
 ?>
 <!doctype html>
 <html lang="en">

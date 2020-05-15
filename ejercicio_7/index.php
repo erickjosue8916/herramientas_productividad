@@ -23,69 +23,47 @@
       <div class="col-lg-4 col-md-6">
       <form action="index.php" method="post" enctype="multipart/form-data"> 
         <div class="form-group">
-         
           <div class="custom-file">
-
-                <label for="exampleFormControlFile1">Cargue un archivo</label>
-                <input type="file" name="subirArchivo" class="form-control-file" id="exampleFormControlFile1">
-                
-        </div>
-        </div>
-        <div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
-        <?php if (isset($archivo)): ?>
-          <?php if (!$extension_correcta) :?>
-            <div class="alert alert-primary" role="alert">
-           Archivo incorrecto
+            <label for="exampleFormControlFile1">Cargue un archivo</label>
+            <input type="file" name="subirArchivo" class="form-control-file" id="exampleFormControlFile1">
           </div>
-
-            <?php elseif (!$archivo_ok) :?>
-              <div class="alert alert-primary" role="alert">
-             Error al cargar el archivo
-             </div>
-
-              <?php else :?> 
-                <div class="col-lg-6 col-md-4">
-                <h3>  Archivo guardado correctamente  </h3>
-                </div>
-
-                <?php endif?>
-              <?php endif;?>
         </div>
-        
-        
-
+        <button type="submit" class="btn btn-primary">Enviar</button>
       </form>
       </div>
 <!-- Oculto hasta enviar el formulario -->
+      <div class="col-lg-6 col-md-4">
       <?php
-       $archivo;
-       $extension;
-       $extension_correcta;
-       $ruta_destino_archivo;
-       $archivo_ok;
-
-        $archivo = (isset($_FILES['subirArchivo'])) ? $_FILES['subirArchivo'] : null;
-          if ($archivo) {
-              $extension = pathinfo($archivo['name'], PATHINFO_EXTENSION);
-              $extension = strtolower($extension);
-              $extension_correcta = ($extension == 'pdf');
-  
-              if ($extension_correcta) {
-                  $ruta_destino_archivo = "archivos/{$archivo['name']}";
-                  $archivo_ok = move_uploaded_file($archivo['tmp_name'], $ruta_destino_archivo);
-              }
+        if ($_FILES) {
+          $archivo = "archivos/".$_FILES['subirArchivo']['name'];
+          $type = $_FILES['subirArchivo']['type'];
+          echo $type;
+          if ($type == "application/pdf") {
+            
+            if (move_uploaded_file($_FILES['subirArchivo']['tmp_name'], $archivo)) { 
+      ?>
+            <div class="alert alert-primary" role="alert">
+              El archivo se guardó correctamente
+            </div>
+      <?php
+            } else {
+      ?>
+              <div class="alert alert-warning" role="alert">
+                Ocurrió un error al guardar el archivo
+              </div>
+      <?php
+            }
+          } else {
+      ?>
+            <div class="alert alert-danger" role="alert">
+              Solo se aceptan archivos pdf
+            </div>
+      <?php
           }
+        }
         
       ?>
-        <!-- HTML que mostrara el resultado -->
-        <!-- Comienza a editar -->
-        
-
-        <!-- DEJA DE EDITAR -->
-      <?php
-       
-      ?>
+      </div>
     </div>
   </div>
     <!-- Optional JavaScript -->
