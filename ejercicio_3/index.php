@@ -26,7 +26,7 @@ obtener el dato que mas se repite(moda), y la media.</span>
         ?>
         <div class="form-group">
           <label>Ingrese la nota: <?php echo ($i + 1); ?></label>
-          <input type="text" class="form-control" name="<?php echo "nota".$i; ?>" required>
+          <input type="number" step="0.01" min="0" max="10" class="form-control"  name="<?php echo "nota".$i; ?>" required>
         </div>
         <?php
           }
@@ -48,7 +48,6 @@ obtener el dato que mas se repite(moda), y la media.</span>
           $cuenta = array_count_values($_POST);
           $orden = implode(", ", $_POST);
               arsort($cuenta);
-            
               $moda=key($cuenta);
               
               
@@ -63,7 +62,7 @@ obtener el dato que mas se repite(moda), y la media.</span>
         <h3>Total de media y moda  </h3>
           <ul>
           
-           <li> <b>Orden de los numeros: </b> <?php echo  $orden?>  </li>
+           <li> <b>Notas agregadas: </b> <?php echo  $orden?>  </li>
             <li> <b>Media:</b> <?php echo $media?>  </li>
             <li> <b>Moda:</b> <?php echo $moda?>  </li>
            

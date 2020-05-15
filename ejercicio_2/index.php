@@ -31,7 +31,7 @@ Metros y viceversa, el usuario puede elegir qué tipo de conversión desea.</spa
         <option value="metros" >Metros a Kilometros</option>
        </select>
           <label>Ingrese la cantidad </label>
-          <input type="text" class="form-control" name="dato" required>
+          <input type="number"  step="0.01" min="0" class="form-control" name="dato" required>
           
         </div>
         <button type="submit" class="btn btn-primary">Calcular</button>
@@ -48,7 +48,7 @@ Metros y viceversa, el usuario puede elegir qué tipo de conversión desea.</spa
           if($opc !="kilometros" && $opc !="metros" )
           {
             $Resultado=0;
-            echo "No tiene opcion seleccionada";
+            $Message="No tiene opcion seleccionada ->".$Resultado." ";
           }
            else if($opc=="kilometros")
             {

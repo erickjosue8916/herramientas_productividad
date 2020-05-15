@@ -14,6 +14,7 @@
     <title>Ejercicio #1</title>
   </head>
   <body>
+  
         <!-- As a heading -->
     <nav class="navbar navbar-light bg-light">
       <span class="navbar-brand mb-0 h1">Ejercicio 1: Cree un programa en php que permita recibir 3 números y determine cual es el
@@ -26,11 +27,11 @@ mayor y cuál es el menor.</span>
         <div class="form-group">
 
           <label>Ingrese el primer numero: </label>
-          <input type="text" class="form-control" name="num1" required>
+          <input type="number" class="form-control" name="num1" required>
           <label>Ingrese el segundo numero: </label>
-          <input type="text" class="form-control" name="num2" required>
+          <input type="number"  class="form-control" name="num2" required>
           <label>Ingrese el tercer numero: </label>
-          <input type="text" class="form-control" name="num3" required>
+          <input type="number"  class="form-control" name="num3" required>
 
         </div>
         <button type="submit" class="btn btn-primary">Calcular</button>
